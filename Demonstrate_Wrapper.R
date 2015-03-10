@@ -1,15 +1,13 @@
-#Allows assignment of arguments
+# Assignment to the command arguments is being performed here. 
 args <- commandArgs(TRUE)
-
-#assigning dir as the first argument
 dir <- as.character(args[1])
 
-#Scripts used for Demonstrate to run
+# source(file) allows R to read and parse the input until the end of the file is reached. In other words it allows you to use the function by running it. 
 source("se.R")
 source("lineplotCI.R")
 source("Demonstrate_Stampede_Edition.R")
 
-#Running the actual program
+#This is what will be called from the linux command line to run the function.
 Demonstrate(dir)
 
 #Command to run program linux
