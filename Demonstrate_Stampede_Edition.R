@@ -2,12 +2,15 @@
 #Original program by: Dustin Landers
 #Stampede Edition by: Stephen Talley and Marco Martinez
 
+# Overall function of Demonstrate. This lists out what is needed for the command line, as well as some assignments for creating the new columns heritability and structure.
 Demonstrate <- function(dir, make.AUC.plot=TRUE, AUC.plot.title="Mean AUC By Population Structure and Heritability",
                         make.MAE.plot=TRUE, MAE.plot.title="Mean MAE By Population Structure and Heritability",herit.strings=list("_03_","_04_","_06_")
                         ,herit.values=list(0.3,0.4,0.6),struct.strings=list("PheHasStruct","PheNPStruct"),struct.values=list(TRUE,FALSE)) {
   
+  # Overall function for making the new columnns heritability and structure.
   makeFiles <- function(dir) {
     
+    # Here the code is reading all .txt files located within said directory.
     readFiles <- function(dir) {
       setwd(dir)
       files <- (Sys.glob("*.txt"))
@@ -15,6 +18,7 @@ Demonstrate <- function(dir, make.AUC.plot=TRUE, AUC.plot.title="Mean AUC By Pop
       return(listOfFiles)
     }
     
+    # Heritability column is being created. Text files from previous function are now data.
     createHeritLabel <- function(data) {
       newData <- data
       newData$Herit <- NA
@@ -26,6 +30,7 @@ Demonstrate <- function(dir, make.AUC.plot=TRUE, AUC.plot.title="Mean AUC By Pop
       return(newData)
     }
     
+    # Structure column is being created.
     createStructureLabel <- function(data) {
       newData <- data
       newData$Structure <- NA
@@ -36,6 +41,7 @@ Demonstrate <- function(dir, make.AUC.plot=TRUE, AUC.plot.title="Mean AUC By Pop
       return(newData)	
     }
     
+    # The structure and heritability columns are being added to the overall data.
     createLabels <- function(data) {
       newData <- createHeritLabel(data)
       newNewData <- createStructureLabel(newData)
@@ -55,6 +61,7 @@ Demonstrate <- function(dir, make.AUC.plot=TRUE, AUC.plot.title="Mean AUC By Pop
     totalDataSet <- rbind(totalDataSet, myFiles[[i]])
   }
   
+  # The AUC plot function is being called with the use of lineplot.R and se.R from the sciplot package
   if (make.AUC.plot) {
     pdf(file=AUC.plot.title)
     lineplot.CI(totalDataSet$Herit,totalDataSet$AUC,totalDataSet$Structure,main=AUC.plot.title,
@@ -62,6 +69,7 @@ Demonstrate <- function(dir, make.AUC.plot=TRUE, AUC.plot.title="Mean AUC By Pop
     dev.off()
   }
   
+  # The MAE plot function is being called with the use of lineplot.R and se.R from the sciplot package
   if (make.MAE.plot) {
     pdf(file=MAE.plot.title)
     lineplot.CI(totalDataSet$Herit,totalDataSet$MAE,totalDataSet$Structure,main=MAE.plot.title,
