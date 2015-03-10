@@ -2,7 +2,7 @@
 #Original program by: Dustin Landers
 #Stampede Edition by: Stephen Talley and Marco Martinez
 
-# Overall function of Demonstrate. This lists out what is needed for the command line,
+# Overall function of Demonstrate. This lists out what is needed for the command line, as well as some assignments for creating the new columns heritability and structure.
 Demonstrate <- function(dir, make.AUC.plot=TRUE, AUC.plot.title="Mean AUC By Population Structure and Heritability",
                         make.MAE.plot=TRUE, MAE.plot.title="Mean MAE By Population Structure and Heritability",herit.strings=list("_03_","_04_","_06_")
                         ,herit.values=list(0.3,0.4,0.6),struct.strings=list("PheHasStruct","PheNPStruct"),struct.values=list(TRUE,FALSE)) {
