@@ -61,7 +61,7 @@ Demonstrate <- function(dir, make.AUC.plot=TRUE, AUC.plot.title="Mean AUC By Pop
     totalDataSet <- rbind(totalDataSet, myFiles[[i]])
   }
   
-  # The AUC plot function is being called with the use of sciplot
+  # The AUC plot function is being called with the use of lineplot.R and se.R from the sciplot package
   if (make.AUC.plot) {
     pdf(file=AUC.plot.title)
     lineplot.CI(totalDataSet$Herit,totalDataSet$AUC,totalDataSet$Structure,main=AUC.plot.title,
@@ -69,7 +69,7 @@ Demonstrate <- function(dir, make.AUC.plot=TRUE, AUC.plot.title="Mean AUC By Pop
     dev.off()
   }
   
-  # The MAE plot function is being called with the use of sciplot
+  # The MAE plot function is being called with the use of lineplot.R and se.R from the sciplot package
   if (make.MAE.plot) {
     pdf(file=MAE.plot.title)
     lineplot.CI(totalDataSet$Herit,totalDataSet$MAE,totalDataSet$Structure,main=MAE.plot.title,
