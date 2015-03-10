@@ -11,5 +11,5 @@ source("Demonstrate_Stampede_Edition.R")
 Demonstrate(dir)
 
 
-#An example would be
-# Rscript Demonstrate_Wrapper.R dir
+#Command to run program from linux
+#Rscript Demonstrate_Wrapper.R ~/Desktop/Demonstrate-Example
